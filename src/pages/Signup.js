@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import withAuth from '../components/withAuth';
 
-import auth from '../services/auth-service';
 
 class Signup extends Component {
 
@@ -15,7 +15,7 @@ class Signup extends Component {
     const username = this.state.username;
     const password = this.state.password;
 
-    auth.signup({ username, password })
+    this.props.signup({ username, password })
       .then( (user) => {
         console.log(user)
         this.setState({
@@ -52,4 +52,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withAuth(Signup);

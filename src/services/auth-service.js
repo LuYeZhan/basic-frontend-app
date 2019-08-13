@@ -3,7 +3,8 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:4000'
+      baseURL: 'http://localhost:4000',
+      withCredentials: true,
     })
   }
 
@@ -23,13 +24,13 @@ class AuthService {
     return this.auth.post('/auth/logout')
       .then(response => response.data)
   }
-
+// si hay current user, devuelvemelo. Es decir para guardar el user, aunque hagamos refresh en la pagina
   me() {
     return this.auth.get('/auth/me')
     .then(response => response.data)
   }
 }
 
-const auth = new AuthService();
+const authService = new AuthService();
 
-export default auth
+export default authService;
