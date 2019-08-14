@@ -6,6 +6,7 @@ class Navbar extends Component {
   render() {  
     return (
       <div>
+        <h2>Navbar</h2>
         {this.props.isLoggedIn ? (
           <>
         <p>username: {this.props.user.username}</p>

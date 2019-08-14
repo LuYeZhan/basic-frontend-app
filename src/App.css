@@ -31,3 +31,41 @@
     transform: rotate(360deg);
   }
 }
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+.two-columns {
+  justify-content: space-around;
+}
+
+.mic {
+  padding: 100px;
+}
+
+.column{
+  flex-direction: column;
+}
+
+.search-bar{
+  padding: 0px 216px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.talk{
+  padding: 0 100px;
+}

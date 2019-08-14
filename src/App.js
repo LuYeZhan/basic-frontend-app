@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 
-import Navbar from './components/Navbar.js';
-import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer'
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import CreateTalk from './pages/CreateTalk'
 
 import AuthProvider from './contexts/auth-context';
 import PrivateRoute from './components/PrivateRoute'
@@ -25,8 +28,11 @@ class App extends Component {
             <Switch>
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
-              <PrivateRoute path='/private' component={Private} />
+              <PrivateRoute path='/home' component={Home} />
+              <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/create-talk" component={CreateTalk} />
             </Switch>
+            <Footer/>
           </div>
         </AuthProvider>
       </Router>
