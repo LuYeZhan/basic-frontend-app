@@ -32,7 +32,7 @@ class App extends Component {
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/create-talk" component={CreateTalk} />
             </Switch>
-            <Footer/>
+              <Footer/>
           </div>
         </AuthProvider>
       </Router>

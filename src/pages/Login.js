@@ -7,6 +7,7 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
+    email: '',
   }
 
   handleFormSubmit = (event) => {
@@ -26,7 +27,7 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, } = this.state;
     return (
       <>
         <form onSubmit={this.handleFormSubmit}>

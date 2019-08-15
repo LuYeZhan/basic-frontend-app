@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withAuth from '../components/withAuth';
+import {withFormik, Form, Field} from 'formik'
+import * as Yup from 'yup'
 
 
 class Signup extends Component {
@@ -8,40 +10,20 @@ class Signup extends Component {
   state = {
     username: '',
     password: '',
+    email: ''
   };
 
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-
-    this.props.signup({ username, password })
-      .then( (user) => {
-        
-        this.setState({
-            username: '',
-            password: '',
-        });
-      })
-      .catch( error => console.log(error) )
-  }
-
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
-
   render() {
-    const { username, password } = this.state;
+    
     return (
       <>
-        <form onSubmit={this.handleFormSubmit}>
-          <label htmlFor='username'>Username:</label>
-          <input id='username' type='text' name='username' value={username} onChange={this.handleChange}/>
-          <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' value={password} onChange={this.handleChange} />
-          <input type='submit' value='Signup' />
-        </form>
+        <Form>
+          {this.props.errors.email && <p>{this.props.errors.email}</p>}
+          <Field  type='text' name='username' placeholder="username"/>
+          <Field  type='email' name='email' placeholder="email" />
+          <Field  type='password' name='password' placeholder="password" />
+          <button  type='submit' > Submit</button>
+        </Form>
 
         <p>Already have account? 
           <Link to={'/login'}> Login</Link>
@@ -52,4 +34,40 @@ class Signup extends Component {
   }
 }
 
-export default withAuth(Signup);
+export default withAuth(withFormik({
+  mapPropsToValues({email, password, username}){
+    return ({
+    email: email || '',
+    password: password || '',
+    username: username || '',
+    })
+  },
+  validationSchema: Yup.object().shape({
+    email: Yup.string()
+      .email('email format has to be correct')
+      .required(),
+    password: Yup.string()
+      .required()
+      .min(8),
+    username: Yup.string()
+      .required('username is required')
+  }),
+  handleSubmit(values, bag){
+    const username = values.username;
+    const password = values.password;
+    const email = values.email;
+
+    bag.props.signup({ username, password, email})
+      .then( (user) => {
+        
+        this.setState({
+            username: '',
+            password: '',
+            email: '',
+        });
+      })
+      .catch( error => console.log(error) )
+  }
+
+
+})(Signup));
