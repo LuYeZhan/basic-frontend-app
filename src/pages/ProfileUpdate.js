@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import withAuth from '../components/withAuth';
 import {withFormik, Form, Field} from 'formik'
 import * as Yup from 'yup'
+import authService from '../services/auth-service'
+import { withRouter} from 'react-router-dom'
 
 
-class Signup extends Component {
+class ProfileUpdate extends Component {
 
   state = {
     username: '',
     password: '',
-    email: ''
+    email: '',
   };
 
   render() {
@@ -26,18 +27,16 @@ class Signup extends Component {
           {this.props.errors.password && this.props.touched.password && <p>{this.props.errors.password}</p>}
           <button  type='submit' > Submit</button>
         </Form>
-
-        <p>Already have account? 
-          <Link to={'/login'}> Login</Link>
-        </p>
-
       </>
     )
   }
 }
 
+const ProfileUpdateWithRouter = withRouter(ProfileUpdate)
+
 export default withAuth(withFormik({
   mapPropsToValues({email, password, username}){
+    
     return ({
     email: email || '',
     password: password || '',
@@ -58,10 +57,15 @@ export default withAuth(withFormik({
     const username = values.username;
     const password = values.password;
     const email = values.email;
+console.log(bag)
+    const id = bag.props.user.id
     
-    bag.props.signup({ username, password, email})
-    
+    authService.update(id,{ username, password, email})
+    .then(() =>{
+        bag.props.history.push('/profile')
+    })
+
   }
 
 
-})(Signup));
+})(ProfileUpdateWithRouter));

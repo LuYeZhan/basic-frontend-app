@@ -6,10 +6,11 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import CreateTalk from './pages/CreateTalk'
-
+import ProfileUpdate from './pages/ProfileUpdate'
 import AuthProvider from './contexts/auth-context';
 import PrivateRoute from './components/PrivateRoute'
 import AnonRoute from './components/AnonRoute'
+
 
 import './App.css';
 import 'milligram';
@@ -23,11 +24,12 @@ class App extends Component {
           <div className="container">
             <h1>Listen and talk</h1>
             <Switch>
-              <AnonRoute path="/signup" component={Signup} />
-              <AnonRoute path="/login" component={Login} />
-              <PrivateRoute path='/home' component={Home} />
-              <PrivateRoute path="/profile" component={Profile} />
-              <PrivateRoute path="/create-talk" component={CreateTalk} />
+              <AnonRoute path="/signup" exact component={Signup} />
+              <AnonRoute path="/login" exact component={Login} />
+              <PrivateRoute path='/home' exact component={Home} />
+              <PrivateRoute path="/profile" exact component={Profile} />
+              <PrivateRoute path= "/profile/update" exact component={ProfileUpdate}/>
+              <PrivateRoute path="/create-talk" exact component={CreateTalk} />
             </Switch>
           </div>
         </AuthProvider>

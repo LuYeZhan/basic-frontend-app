@@ -39,7 +39,8 @@ export default withAuth(withFormik({
   },
   validationSchema: Yup.object().shape({
     password: Yup.string()
-      .required()
+      .required(
+      'lu es mionger')
       .min(2),
     username: Yup.string()
       .required()

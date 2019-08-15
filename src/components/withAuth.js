@@ -10,13 +10,14 @@ const wihtAuth = (Comp) => {
                 <AuthContext.Consumer>
                 {/* esto es value desestructurizado, es decir en el Comp, deberia ser;
                 value.user, value.isLoggedIn, ... */}
-                {({user, isLoggedIn, login, signup, logout}) => (
+                {({user, isLoggedIn, login, signup, logout,update}) => (
                 <Comp 
                 user = {user} 
                 isLoggedIn = {isLoggedIn}
                 login = {login}
                 signup = {signup}
                 logout = {logout}
+                update = {update}
                 {... this.props}
                 />
                 )}
