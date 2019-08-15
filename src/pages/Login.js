@@ -1,42 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withAuth from '../components/withAuth';
-
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup'
 
 class Login extends Component {
   state = {
     username: '',
     password: '',
-    email: '',
-  }
-
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const { username, password } = this.state
-
-    this.props.login({ username, password })
-    .then( (user) => {
-      console.log(user)
-    })
-    .catch( error => console.log(error) )
-  }
-
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
   }
 
   render() {
-    const { username, password, } = this.state;
+    
     return (
       <>
-        <form onSubmit={this.handleFormSubmit}>
-          <label htmlFor='username' >Username:</label>
-          <input id='username' type='text' name='username' value={username} onChange={this.handleChange}/>
-          <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' value={password} onChange={this.handleChange} />
-          <input type='submit' value='Login' />
-        </form>
+        <Form>
+          <Field  type='text' name='username' placeholder="username"/>
+          {this.props.errors.username && <p>{this.props.errors.username}</p>}
+          <Field  type='password' name='password' placeholder ="password" />
+          {this.props.errors.password && <p>{this.props.errors.password}</p>}
+          <button type='submit'> Submit </button>
+        </Form>
 
         <p>You don't have an accout yet?
             <Link to={'/signup'}> Signup</Link>
@@ -46,4 +30,23 @@ class Login extends Component {
   }
 }
 
-export default withAuth(Login);
+export default withAuth(withFormik({
+  mapPropsToValues({password, username}){
+    return ({
+    password: password || '',
+    username: username || '',
+    })
+  },
+  validationSchema: Yup.object().shape({
+    password: Yup.string()
+      .required()
+      .min(2),
+    username: Yup.string()
+      .required()
+  }),
+  handleSubmit: (values, bag) => {
+    const username = values.username;
+    const password = values.password;
+    bag.props.login({ username, password});
+  }
+})(Login));

@@ -18,10 +18,12 @@ class Signup extends Component {
     return (
       <>
         <Form>
-          {this.props.errors.email && <p>{this.props.errors.email}</p>}
           <Field  type='text' name='username' placeholder="username"/>
+          {this.props.errors.username && <p>{this.props.errors.username}</p>}
           <Field  type='email' name='email' placeholder="email" />
+          {this.props.errors.email && <p>{this.props.errors.email}</p>}
           <Field  type='password' name='password' placeholder="password" />
+          {this.props.errors.password && <p>{this.props.errors.password}</p>}
           <button  type='submit' > Submit</button>
         </Form>
 
@@ -48,7 +50,7 @@ export default withAuth(withFormik({
       .required(),
     password: Yup.string()
       .required()
-      .min(8),
+      .min(2,'minimo 2 asshole!'),
     username: Yup.string()
       .required('username is required')
   }),
@@ -56,17 +58,9 @@ export default withAuth(withFormik({
     const username = values.username;
     const password = values.password;
     const email = values.email;
-
+    
     bag.props.signup({ username, password, email})
-      .then( (user) => {
-        
-        this.setState({
-            username: '',
-            password: '',
-            email: '',
-        });
-      })
-      .catch( error => console.log(error) )
+    
   }
 
 

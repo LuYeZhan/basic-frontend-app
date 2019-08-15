@@ -3,8 +3,6 @@ import {BrowserRouter as Router, Switch} from 'react-router-dom';
 
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Navbar from './components/Navbar.js';
-import Footer from './components/Footer'
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import CreateTalk from './pages/CreateTalk'
@@ -20,11 +18,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-      {/* cualquier ruta que este dentro del auth provider, yo tengo acceso al      Adhoc withAuth */}
+      {/* cualquier ruta que este dentro del auth provider, yo tengo acceso al Adhoc withAuth */}
         <AuthProvider>
           <div className="container">
-            <h1>Basic React Authentication</h1>
-            <Navbar />
+            <h1>Listen and talk</h1>
             <Switch>
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
@@ -32,7 +29,6 @@ class App extends Component {
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/create-talk" component={CreateTalk} />
             </Switch>
-              <Footer/>
           </div>
         </AuthProvider>
       </Router>
