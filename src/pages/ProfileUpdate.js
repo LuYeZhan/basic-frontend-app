@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import withAuth from '../components/withAuth';
-import {withFormik, Form, Field} from 'formik'
-import * as Yup from 'yup'
-import authService from '../services/auth-service'
-import { withRouter} from 'react-router-dom'
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+import authService from '../services/auth-service';
+import { withRouter} from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 
 class ProfileUpdate extends Component {
@@ -18,6 +19,7 @@ class ProfileUpdate extends Component {
     
     return (
       <>
+        <Navbar goBack={this.props}/>
         <Form>
           <Field  type='text' name='username' placeholder="username"/>
           {this.props.errors.username && this.props.touched.username && <p>{this.props.errors.username}</p>}
@@ -53,16 +55,17 @@ export default withAuth(withFormik({
     username: Yup.string()
       .required('username is required')
   }),
-  handleSubmit(values, bag){
+  handleSubmit(values, {props} ){
     const username = values.username;
     const password = values.password;
     const email = values.email;
-console.log(bag)
-    const id = bag.props.user.id
+
+    const id = props.user.id;
     
     authService.update(id,{ username, password, email})
     .then(() =>{
-        bag.props.history.push('/profile')
+        props.history.push('/profile')
+        props.updateUserData();
     })
 
   }

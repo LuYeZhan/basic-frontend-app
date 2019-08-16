@@ -30,7 +30,6 @@ class AuthService {
     .then(response => response.data)
   };
   update(id, user) {
-    console.log('algo')
     return this.auth.put(`/profile/update`, user)
     .then(response => response.data)
   };

@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
+import withAuth from '../components/withAuth';
+
 
 
 
 
 class Profile extends Component {
 
-    state = {
-        username: '',
-        email: '',
-    };
-
-    handleEditClick = (id) => {
-    const {user} = this.state;
-    user.EditOneUser(id)
-    .then(() =>{
-        this.setState({
-            username: '',
-            email: '',
-        })
-    })
-    }
-
     render() {
-        const {user} = this.state
         return (
             <>
                 <Navbar goBack={this.props}/>
+                <button onClick={this.props.logout}>Logout</button>
                 <div>
                     <h1>Profile page</h1>
-                    <button onClick= {() =>{
-                        this.handleEditClick(user._id)
-                    }}>Edit user</button>
+                   <Link to= '/profile/update'> <button>Edit user</button> </Link>
                     <ul className="flex">
                         <li> <button>profile pic</button> </li>
                         <li> <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur consequatur quibusdam deleniti quo error odit.</p> </li>
@@ -48,4 +33,4 @@ class Profile extends Component {
         )
     }
 }
-export default Profile;
+export default withAuth(Profile);

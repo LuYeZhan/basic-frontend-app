@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import authService from '../services/auth-service'
+import React, { Component } from 'react';
+import authService from '../services/talk-service';
 
-export const AuthContext = React.createContext();
+export const TalkContext = React.createContext();
 
 class AuthProvider extends Component {
     state = {

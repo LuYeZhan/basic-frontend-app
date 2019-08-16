@@ -54,12 +54,12 @@ export default withAuth(withFormik({
     username: Yup.string()
       .required('username is required')
   }),
-  handleSubmit(values, bag){
+  handleSubmit(values, {props}){
     const username = values.username;
     const password = values.password;
     const email = values.email;
     
-    bag.props.signup({ username, password, email})
+    props.signup({ username, password, email})
     
   }
 

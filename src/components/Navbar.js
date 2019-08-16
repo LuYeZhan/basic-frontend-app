@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from './withAuth'
+import withAuth from './withAuth';
 
 class Navbar extends Component {
   render() { 
@@ -11,7 +11,6 @@ class Navbar extends Component {
           <>
             <p>username: {this.props.user.username}</p>
             <button onClick={()=>{this.props.goBack.history.goBack()}}>BACK</button>
-            <button onClick={this.props.logout}>Logout</button>
           </>
         ) : (
         <>
