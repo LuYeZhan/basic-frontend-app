@@ -3,6 +3,18 @@ import React from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import talkService from '../services/talk-service'
+import firebase from "firebase";
+ 
+const config = {
+  apiKey: "AIzaSyBuNW91oYKUj0x2V9FVbckJdU7EZrmAul8",
+  authDomain: "listenandtalk-a3074.firebaseapp.com",
+  storageBucket: "gs://listenandtalk-a3074.appspot.com"
+};
+firebase.initializeApp(config);
+var storage = firebase.storage();
+var storageRef = storage.ref('audio');
+var audioRef = storageRef.child('audio')
+
 
 class Mic extends React.Component {
   constructor(props) {
@@ -33,14 +45,20 @@ class Mic extends React.Component {
   }
 
 onStop = (recordedBlob) => {
+    let audio = new File([recordedBlob.blob], "audio", {type:"webm;codecs=opus"})
     this.setState({
         sound: recordedBlob.blobURL
     })
     console.log('recordedBlob is: ', recordedBlob);
+    console.log(audio);
+    var audioUploaded = audioRef.put(audio).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+    });
+
+
   }
 
   render() {
-      console.log(this.state)
     return (
       <div>
         <ReactMic
@@ -87,7 +105,6 @@ export default withFormik({
   handleSubmit(values, { props }){
     const title = values.title;
     const tags = values.tags;
-    console.log(values.tags)
 
     talkService.create({ title, tags})
     .then(() =>{
