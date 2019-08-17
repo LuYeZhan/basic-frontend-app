@@ -84,12 +84,12 @@ export default withFormik({
     tags: Yup.string()
       .required('ex: #happiness')
   }),
-  handleSubmit(values, bag){
+  handleSubmit(values, { props }){
     const title = values.title;
     const tags = values.tags;
-    const id = bag.props.talk.id;
+    console.log(values.tags)
 
-    talkService.create(id,{ title, tags})
+    talkService.create({ title, tags})
     .then(() =>{
 
   // una vez terminado, cambiar el estado del form a false, y volver a home o profile.. o create-talk?
