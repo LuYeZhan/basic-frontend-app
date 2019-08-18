@@ -14,7 +14,7 @@ const PrivateRoute = (props) => {
         
         }}
         {...rest}
-       /> : <Redirect to='/login' />}
+       /> : <Redirect to='/splash' />}
         </>
     );
 }

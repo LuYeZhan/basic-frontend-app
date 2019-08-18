@@ -4,7 +4,7 @@ import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import talkService from '../services/talk-service'
 import firebase from "firebase";
-import FileUploader from "react-firebase-file-uploader";
+// import FileUploader from "react-firebase-file-uploader";
 import moment from 'moment';
 import 'moment/locale/es'
 moment.locale('es');

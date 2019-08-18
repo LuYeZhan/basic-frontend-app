@@ -7,9 +7,9 @@ class Footer extends Component {
         return (
             <div>
                 <h2>Footer</h2>
-                <Link to = '/home' > <img src="./images/2.jpg" alt=""/> </Link>
-                <Link to = '/create-talk' > <img src="./images/3.jpg" alt=""/> </Link>
-                <Link to ='/profile'> <img src="./images/1.jpg" alt=""/> </Link>
+                <Link to = '/' > <button >Home </button></Link>
+                <Link to = '/create-talk'> <button > Record </button> </Link>
+                <Link to ='/profile'> <button> Profile </button> </Link>
             </div>
         )
     }
