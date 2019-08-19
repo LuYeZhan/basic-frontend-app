@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from './withAuth'
+import withAuth from './withAuth';
+require('typeface-roboto');
 
 class Footer extends Component {
     render() {

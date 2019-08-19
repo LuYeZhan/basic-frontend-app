@@ -1,13 +1,12 @@
 import { ReactMic } from 'react-mic';
 import React from 'react';
-import {withFormik, Form, Field} from 'formik';
-import * as Yup from 'yup';
-import talkService from '../services/talk-service'
 import firebase from "firebase";
-// import FileUploader from "react-firebase-file-uploader";
 import moment from 'moment';
 import 'moment/locale/es'
+import FormTest from '../components/FormTest';
 moment.locale('es');
+require('typeface-roboto');
+
 
  
 const config = {
@@ -17,24 +16,16 @@ const config = {
 };
 
 firebase.initializeApp(config);
-var storage = firebase.storage();
-var storageRef = storage.ref('audio');
-const dateToday = new Date();
-const randomNum = Math.floor(Math.random()*128394327832781/61283625);
-var audioRef = storageRef.child(`audio${moment(dateToday).format('LTS')}${randomNum}`)
+const storage = firebase.storage();
+const storageRef = storage.ref('audio');
 
 
 class Mic extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       record: false,
-      sound: '',
+      soundURL: '',
       isSoundCreated: false,
-
     }
-
-  }
 
   startRecording = () => {
     this.setState({
@@ -45,40 +36,28 @@ class Mic extends React.Component {
   stopRecording = () => {
     this.setState({
       record: false,
-      isSoundCreated: true,
     });
   }
 
   onData(recordedBlob) {
-    console.log('chunk of real-time data is: ', recordedBlob);
+    
   }
 
 onStop = (recordedBlob) => {
-    let audio = new File([recordedBlob.blob], "audio", {type:"webm;codecs=opus"})
-    this.setState({
-        sound: recordedBlob.blobURL
+  const dateToday = new Date();
+  const randomNum = Math.floor(Math.random()*128394327832781/61283625);
+    let audio = new File([recordedBlob.blob], `audio${moment(dateToday).format('LTS')}${randomNum}`, {type:"webm;codecs=opus"})
+    storageRef.child(`audio${moment(dateToday).format('LTS')}${randomNum}`).put(audio).then( (snapshot) => {
+      console.log('Uploaded a blob or file!');
+      firebase.storage().ref('audio').child(`audio${moment(dateToday).format('LTS')}${randomNum}`).getDownloadURL().then((url) => {
+        this.setState({
+          soundURL: url,
+          isSoundCreated: true,
+        })
+      })
     })
-    console.log('recordedBlob is: ', recordedBlob);
-    console.log(audio);
-    var audioUploaded = audioRef.put(audio).then(function(snapshot) {
-    console.log('Uploaded a blob or file!');
-    })
-    // audioUploaded.getDownloadURL()
-    // .then(url => {
-    //   console.log(url)
-    //   this.setState({ sound: url })
-    //   console.log(this.state.sound)
-    // })
      
   }
-  // handleUploadSuccess = audioUploaded => {
-  //     firebase
-  //       .getDownloadURL()
-  //       .then(url => {
-  //         console.log(url)
-  //         this.setState({ sound: url })
-  //       });
-  // };
     
   render() {
     return (
@@ -92,45 +71,10 @@ onStop = (recordedBlob) => {
           backgroundColor="#FF4081" />
         <button onClick={this.startRecording} type="button">Start</button>
         <button onClick={this.stopRecording} type="button">Stop</button>
-        <audio 
-        controls
-         src={this.state.sound}>
-         <code> audio </code> element.
-        </audio>
-      {this.state.isSoundCreated ? <Form>
-          <Field  type='text' name='title' placeholder="title"/>
-          {this.props.errors.title && this.props.touched.title && <p>{this.props.errors.title}</p>}
-          <Field  type='text' name='tags' placeholder="tags" />
-          {this.props.errors.tags && this.props.touched.tags && <p>{this.props.errors.tags}</p>}
-          {/* timestamps? */}
-          <button  type='submit' > Submit</button>
-        </Form> : null } 
+        {this.state.isSoundCreated ? <FormTest soundURL={this.state.soundURL}/> : null}
       </div>
     );
   }
 }
-export default withFormik({
-  mapPropsToValues({title, tags}){
-    return({
-      title: title || '',
-      tags: tags || '',
-    })
-  },
-  validationSchema: Yup.object().shape({
-    title: Yup.string()
-      .required('explain what u said in 1 word'),
-    tags: Yup.string()
-      .required('#happiness')
-  }),
-  handleSubmit(values, { props }){
-    const title = values.title;
-    const tags = values.tags;
 
-    talkService.create({ title, tags})
-    .then(() =>{
-
-  // una vez terminado, cambiar el estado del form a false, y volver a home o profile.. o create-talk?
-      
-    })   
-  }
-})(Mic)
+export default Mic;

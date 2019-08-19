@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withAuth from '../components/withAuth';
-import {withFormik, Form, Field} from 'formik'
-import * as Yup from 'yup'
-
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+require('typeface-roboto');
 
 class Signup extends Component {
 

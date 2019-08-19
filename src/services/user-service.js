@@ -13,7 +13,7 @@ class UserService {
       .then(({ data }) => data);
   };
   getHome() {
-    return this.talk.get('/')
+    return this.user.get('/')
       .then(({data}) => data);
   }
   

@@ -1,3 +1,6 @@
+body{
+  background-color: #ffd403
+}
 .App {
   text-align: center;
 }
@@ -68,4 +71,8 @@ ul li {
 
 .talk{
   padding: 0 100px;
+}
+
+button{
+  background-color: #282c34 ;
 }

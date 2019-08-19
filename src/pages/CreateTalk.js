@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Mic from '../components/ReactMic';
-
+require('typeface-roboto');
 
 class CreateTalk extends Component {
     state = {

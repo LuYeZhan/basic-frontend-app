@@ -9,8 +9,8 @@ class TalkService {
   };
 
   create(talk) {
-    const { title, audio, creator, talks } = talk;
-    return this.talk.post('/create', { title, audio, creator, talks })
+    const { title, tags, soundURL, creator  } = talk;
+    return this.talk.post('/create', { title, tags, soundURL, creator  })
       .then(({ data }) => data);
   };
 

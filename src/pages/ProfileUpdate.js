@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import authService from '../services/auth-service';
 import { withRouter} from 'react-router-dom';
 import Navbar from '../components/Navbar';
+require('typeface-roboto');
 
 
 class ProfileUpdate extends Component {

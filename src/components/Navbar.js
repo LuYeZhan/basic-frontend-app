@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withAuth from './withAuth';
+require('typeface-roboto');
 
 class Navbar extends Component {
   render() { 
