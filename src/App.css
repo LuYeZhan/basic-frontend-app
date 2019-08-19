@@ -75,4 +75,7 @@ ul li {
 
 button{
   background-color: #282c34 ;
+  padding: 15px 25px;
+  color:white;
+  border-radius: 15px;
 }

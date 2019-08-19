@@ -4,7 +4,7 @@ class TalkService {
   constructor() {
     this.talk = axios.create({
       baseURL: process.env.REACT_APP_BACKEND_DOMAIN + '/talk',
-      // withCredentials: true, not needed for talks?
+      withCredentials: true
     })
   };
 

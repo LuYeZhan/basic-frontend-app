@@ -2,53 +2,55 @@ import React, { Component } from 'react';
 import withAuth from '../components/withAuth';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import userService from '../services/user-service'
+import Search from '../components/Search';
+import userService from '../services/user-service';
 require('typeface-roboto');
 
 class Home extends Component {
   state = {
-    talk: []
+    talk: [],
+    showingTalk: []
   }
-
   componentDidMount() {
     userService.getHome()
       .then((response) => {
-        console.log(response)
         this.setState({
-          talk: response
+          talk: response,
+          showingTalk: response
         });
-        console.log(this.state.talk)
+        console.log(response)
       }).catch((error) => {
         console.log(error)
       })
   }
+
+  talkShowingState = (talks) => {
+    this.setState({
+      showingTalk: talks
+    })
+  }
+
   render() {
-    const {talk} = this.state
-    console.log(talk)
+    const {talk, showingTalk} = this.state
     return (
       <>
       <Navbar goBack={this.props}/>
         <div className="flex column">
-        {talk.length > 0 ? talk.map((talk)=> {
-          return (
-            <>
-              <article key={talk._id}>
-                <audio 
+          <h1>Welcome free talker </h1>
+          <Search changetalk={this.talkShowingState} talk={showingTalk} className="search-bar">Search bar</Search>
+          {talk.length > 0 ? talk.map((talk)=> {
+            return (
+              <div key={talk._id}>
+              <article >
+                <audio
                   controls
                   src={talk.soundURL}>
                   <code> audio </code> element.
                 </audio>
               </article>
-              </>
+              </div>
           )
           }):null}
-          <h1>Welcome free talker </h1>
-          <button className="mic">Logo</button>
-          <button className="search-bar">Search bar</button>
-          <button className="talk">Talk1</button>
-          <button className="talk">Talk2</button>
-          <button className="talk">Talk3</button>
-          <button className="talk">Talk4</button>
         </div>
       <Footer/>
       </>

@@ -11,7 +11,7 @@ class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <>
             <p>username: {this.props.user.username}</p>
-            <button onClick={()=>{this.props.goBack.history.goBack()}}>BACK</button>
+            <img src='./images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
           </>
         ) : (
         <>

@@ -7,8 +7,6 @@ import FormTest from '../components/FormTest';
 moment.locale('es');
 require('typeface-roboto');
 
-
- 
 const config = {
   apiKey: "AIzaSyBuNW91oYKUj0x2V9FVbckJdU7EZrmAul8",
   authDomain: "listenandtalk-a3074.firebaseapp.com",
@@ -18,7 +16,6 @@ const config = {
 firebase.initializeApp(config);
 const storage = firebase.storage();
 const storageRef = storage.ref('audio');
-
 
 class Mic extends React.Component {
     state = {
@@ -56,9 +53,8 @@ onStop = (recordedBlob) => {
         })
       })
     })
-     
   }
-    
+  
   render() {
     return (
       <div>

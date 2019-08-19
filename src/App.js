@@ -14,7 +14,7 @@ import AnonRoute from './components/AnonRoute'
 
 
 import './App.css';
-import 'milligram';
+
 
 class App extends Component {
   render() {
