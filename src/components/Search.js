@@ -10,9 +10,8 @@ changeFatherState = (event) => {
     const value = event.target.value;
     const newTalks = this.state.talk
     const filteredTitles = newTalks.filter((talk) => {
-    return talk.title.includes(value) || talk.tags[0].includes(`#${value}`)
+    return talk.title.includes(value) || talk.tags[0].includes(value)
     })
-    
     this.props.changeTalk(filteredTitles)
 }
   render() {

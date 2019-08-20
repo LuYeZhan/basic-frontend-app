@@ -57,7 +57,7 @@ onStop = (recordedBlob) => {
   
   render() {
     return (
-      <div>
+      <div className="container">
         <ReactMic
           record={this.state.record}
           className="sound-wave"
@@ -67,7 +67,8 @@ onStop = (recordedBlob) => {
           backgroundColor="#FF4081" />
         <button onClick={this.startRecording} type="button">Start</button>
         <button onClick={this.stopRecording} type="button">Stop</button>
-        {this.state.isSoundCreated ? <FormTest soundURL={this.state.soundURL}/> : null}
+        {this.state.isSoundCreated ? 
+        <FormTest soundURL={this.state.soundURL}/> : null}
       </div>
     );
   }

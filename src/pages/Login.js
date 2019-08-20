@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from '../components/withAuth';
+import WithAuth from '../components/WithAuth';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 require('typeface-roboto');
@@ -16,7 +16,7 @@ class Login extends Component {
     return (
       <>
         <Form>
-          <Field  type='text' name='username' placeholder="username"/>
+          <Field type='text' name='username' placeholder="username"/>
           {this.props.errors.username && <p>{this.props.errors.username}</p>}
           <Field  type='password' name='password' placeholder ="password" />
           {this.props.errors.password && <p>{this.props.errors.password}</p>}
@@ -31,7 +31,7 @@ class Login extends Component {
   }
 }
 
-export default withAuth(withFormik({
+export default WithAuth(withFormik({
   mapPropsToValues({password, username}){
     return ({
     password: password || '',

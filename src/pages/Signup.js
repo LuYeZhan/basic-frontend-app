@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from '../components/withAuth';
+import WithAuth from '../components/WithAuth';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 require('typeface-roboto');
@@ -36,7 +36,7 @@ class Signup extends Component {
   }
 }
 
-export default withAuth(withFormik({
+export default WithAuth(withFormik({
   mapPropsToValues({email, password, username}){
     return ({
     email: email || '',

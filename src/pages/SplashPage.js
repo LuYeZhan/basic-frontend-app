@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 require('typeface-roboto');
 
 export default class SplashPage extends Component {
     render() {
         return (
-            <div>
+            <div className="container">
 
                 <p>if you cannot see the truth, heard the truth</p>
                
-                <Link to = '/signup' > <button >Signup </button></Link>
-                <Link to = '/login'> <button > Connect </button> </Link>
+                <Link to = '/signup'><button>Signup</button></Link>
+                <Link to = '/login'><button>Connect</button></Link>
 
                 <p>everything starts with a conversation</p>
 

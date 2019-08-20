@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import withAuth from './withAuth';
+import WithAuth from './WithAuth';
 
 const AnonRoute = (props) => {
     // hemos hecho rename del component a Component, con los :
@@ -19,4 +19,4 @@ const AnonRoute = (props) => {
     );
 }
 
-export default withAuth(AnonRoute);
+export default WithAuth(AnonRoute);

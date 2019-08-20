@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import withAuth from './withAuth';
+import WithAuth from './WithAuth';
 
 const PrivateRoute = (props) => {
     // hemos hecho rename del component a Component, con los :
@@ -19,4 +19,4 @@ const PrivateRoute = (props) => {
     );
 }
 
-export default withAuth(PrivateRoute);
+export default WithAuth(PrivateRoute);

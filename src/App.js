@@ -30,8 +30,8 @@ class App extends Component {
               <AnonRoute path="/login" exact component={Login} />
               <PrivateRoute path='/' exact component={Home} />
               <PrivateRoute path="/profile" exact component={Profile} />
-              <PrivateRoute path= "/profile/update" exact component={ProfileUpdate}/>
-              <PrivateRoute path="/create-talk" exact component={CreateTalk} />
+              <PrivateRoute path= "/profile/update" component={ProfileUpdate}/>
+              <PrivateRoute path="/create-talk" component={CreateTalk} />
             </Switch>
           </div>
         </AuthProvider>

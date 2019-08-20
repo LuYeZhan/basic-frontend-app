@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {AuthContext} from '../contexts/auth-context';
 
-
-
-const wihtAuth = (Comp) => {
+const WithAuth = (Comp) => {
     return class WithAuth extends Component {
         render() {
             return (
@@ -28,4 +26,4 @@ const wihtAuth = (Comp) => {
     }
 }
 
-export default wihtAuth;
+export default WithAuth;

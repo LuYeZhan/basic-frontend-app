@@ -1,5 +1,6 @@
 body{
-  background-color: #ffad59}
+  /* background-color: #e6ecf0; */
+}
 .App {
   text-align: center;
 }
@@ -73,8 +74,52 @@ ul li {
 }
 
 button{
-  background-color: #282c34 ;
-  padding: 15px 25px;
-  color:white;
-  border-radius: 15px;
+  background-color: black;
+  border: 0.1rem solid white;
+  border-radius: .4rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  height: 3.8rem;
+  letter-spacing: .1rem;
+  line-height: 3.8rem;
+  padding: 0 3.0rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* opacity: 0.8; */
+}
+button:hover{
+  background-color: orange;
+  /* opacity: 0.1; */
+}
+
+input {
+  appearance: none;
+  background-color: transparent;
+  border: 0.1rem solid #d1d1d1;
+  border-radius: .4rem;
+  box-shadow: none;
+  box-sizing: inherit;
+  height: 3.8rem;
+  padding: .6rem 1.0rem;
+  width: 100%;
+}
+input:hover{
+  background-color: #e6ecf0;
+}
+
+.container {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;  
+}
+
+img {
+  width: 75px ;
+  height: 75px ;
 }

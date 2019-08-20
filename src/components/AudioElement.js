@@ -4,7 +4,7 @@ export default function AudioElement(props) {
     const { talk } = props;
     return (
     <div>
-        <article >
+        <article>
             <audio
             controls
             src={talk.soundURL}>

@@ -12,9 +12,8 @@ class CreateTalk extends Component {
         return (
             <>
                 <Navbar goBack={this.props}/>
-                <div>
+                <div className="container">
                     <h1> Create talk page</h1>
-                    <button className="mic">Record</button>
                     <Mic/>
                 </div>
                 <Footer/>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withAuth from '../components/withAuth';
+import WithAuth from '../components/WithAuth';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import authService from '../services/auth-service';
@@ -37,7 +37,7 @@ class ProfileUpdate extends Component {
 
 const ProfileUpdateWithRouter = withRouter(ProfileUpdate)
 
-export default withAuth(withFormik({
+export default WithAuth(withFormik({
   mapPropsToValues({email, password, username}){
     
     return ({

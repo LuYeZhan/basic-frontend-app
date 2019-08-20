@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import withAuth from '../components/withAuth';
+import WithAuth from '../components/WithAuth';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Search from '../components/Search';
 import userService from '../services/user-service';
+// import AudioPlayer from 'react-responsive-audio-player';
+
 require('typeface-roboto');
 
 class Home extends Component {
@@ -34,12 +36,12 @@ class Home extends Component {
       <>
       <Navbar goBack={this.props}/>
         <div className="flex column">
-          <h1>Welcome free talker </h1>
+          <h1>Home page</h1>
           {talk.length > 0 ? <Search changeTalk={this.talkShowingState} talk={talk} className="search-bar">Search bar</Search> : null}
           {showingTalk.length > 0 ? showingTalk.map((talk)=> {
             return (
               <div key={talk._id}>
-              <article >
+              <article>
                 <audio
                   controls
                   src={talk.soundURL}>
@@ -56,4 +58,4 @@ class Home extends Component {
   }
 }
 
-export default withAuth(Home);
+export default WithAuth(Home);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from './withAuth';
+import WithAuth from './WithAuth';
 require('typeface-roboto');
 
 class Footer extends Component {
@@ -16,4 +16,4 @@ class Footer extends Component {
     }
 }
 
-export default withAuth(Footer);
+export default WithAuth(Footer);

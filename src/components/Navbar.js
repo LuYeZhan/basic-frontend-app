@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withAuth from './withAuth';
+import WithAuth from './WithAuth';
 require('typeface-roboto');
 
 class Navbar extends Component {
@@ -11,7 +11,7 @@ class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <>
             <p>username: {this.props.user.username}</p>
-            <img src='./images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
+            <img src='../images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
           </>
         ) : (
         <>
@@ -24,4 +24,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default WithAuth(Navbar);
