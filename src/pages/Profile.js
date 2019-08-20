@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import AudioElement from '../components/AudioElement'
 import { Link } from 'react-router-dom';
 import withAuth from '../components/withAuth';
 import userService from '../services/user-service';
+import talkService from '../services/talk-service';
 require('typeface-roboto');
 
 
@@ -24,6 +26,19 @@ class Profile extends Component {
             console.log(error)
           })
       }
+    delete = (index,talk_id) => {
+      
+    talkService.delete(talk_id)
+    .then((response)=>{
+      const { talk } = this.state;
+      const newMyTalks = [...talk];
+      newMyTalks.splice(index, 1)
+      this.setState ({
+        talk: newMyTalks,
+    })
+    })
+  } 
+
     render() {
         const {talk} = this.state
         return (
@@ -39,17 +54,12 @@ class Profile extends Component {
                         <li><button>add friend</button></li>
                     </ul>
                     <ul className="flex column">
-                    {talk.length > 0 ? talk.map((talk)=> {
+                    {talk.length > 0 ? talk.map((talk, index)=> {
                         return (
-                        <div key={talk._id}>
-                        <article >
-                            <audio
-                            controls
-                            src={talk.soundURL}>
-                            <code> audio </code> element.
-                            </audio>
-                        </article>
-                        </div>
+                          <div key={index}>
+                            <AudioElement key={talk._id} talk={talk}/>
+                            <img src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
+                          </div>
                     )
                     }):null}
                         <li><button>friends</button></li>

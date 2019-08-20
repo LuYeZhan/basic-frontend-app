@@ -16,6 +16,10 @@ class UserService {
     return this.user.get('/')
       .then(({data}) => data);
   }
+  deleteTalk() {
+    return this.user.post('/profile')
+      .then(({data}) => data);
+  }
   
   }
 

@@ -10,7 +10,7 @@ class Home extends Component {
   state = {
     talk: [],
     showingTalk: []
-  }
+  } 
   componentDidMount() {
     userService.getHome()
       .then((response) => {
@@ -18,9 +18,6 @@ class Home extends Component {
           talk: response,
           showingTalk: response
         });
-        console.log(response)
-      }).catch((error) => {
-        console.log(error)
       })
   }
 
@@ -32,13 +29,14 @@ class Home extends Component {
 
   render() {
     const {talk, showingTalk} = this.state
+  
     return (
       <>
       <Navbar goBack={this.props}/>
         <div className="flex column">
           <h1>Welcome free talker </h1>
-          <Search changetalk={this.talkShowingState} talk={showingTalk} className="search-bar">Search bar</Search>
-          {talk.length > 0 ? talk.map((talk)=> {
+          {talk.length > 0 ? <Search changeTalk={this.talkShowingState} talk={talk} className="search-bar">Search bar</Search> : null}
+          {showingTalk.length > 0 ? showingTalk.map((talk)=> {
             return (
               <div key={talk._id}>
               <article >

@@ -9,8 +9,8 @@ class Footer extends Component {
             <div>
                 <h2>Footer</h2>
                 <Link to = '/' ><img src="./images/home.png" alt=""/></Link>
-                <Link to = '/create-talk' ><img src="./images/mic.jpg" alt="" /></Link>
-                <Link to = '/profile' ><img src="./images/usuario.png" alt=""/></Link>
+                <Link to = '/create-talk' ><img src="./images/mic.png" alt="" /></Link>
+                <Link to = '/profile' ><img src="./images/profile.png" alt=""/></Link>
             </div>
         )
     }
