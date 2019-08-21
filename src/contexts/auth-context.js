@@ -22,7 +22,7 @@ class AuthProvider extends Component {
 
     userLogin = (user) => {
       return authService.login(user)
-         .then(() => {
+        .then(() => {
             this.setState({
                 isLoggedIn: true,
                 user
@@ -41,32 +41,32 @@ class AuthProvider extends Component {
     }
 
     componentDidMount(){
-    this.updateUserData()
+        this.updateUserData()
     }
 
     updateUserData =() => {
         authService.me()
-        .then(user =>  {
-            this.setState({
-                user,
-                isLoggedIn: true,
-                isLoading: false
+            .then(user =>  {
+                this.setState({
+                    user,
+                    isLoggedIn: true,
+                    isLoading: false
+                })
             })
-        })
-        .catch(() => {
-            this.setState({
-                isLoggedIn:false,
-                user:{},
-                isLoading: false
+            .catch(() => {
+                this.setState({
+                    isLoggedIn:false,
+                    user:{},
+                    isLoading: false
+                })
             })
-        })
     }
 
     render() {
         const {user, isLoggedIn, isLoading} = this.state;
         return (
             <>
-            {isLoading ? <p>Loading...</p> : (
+                {isLoading ? <p>Loading...</p> : (
 
                 <AuthContext.Provider value={ 
                     {

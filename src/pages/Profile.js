@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import AudioElement from '../components/AudioElement'
 import { Link } from 'react-router-dom';
 import WithAuth from '../components/WithAuth';
 import userService from '../services/user-service';
@@ -30,37 +29,36 @@ class Profile extends Component {
       newMyTalks.splice(index, 1)
       this.setState ({
         talk: newMyTalks,
-  })
-  })
+      })
+    })
   } 
   
   render() {
       const {talk} = this.state
       return (
           <> 
-            <div className="flex around">
-            <Navbar goBack={this.props}/>
-            <img src="../images/logout.png" alt="logout icon" className="icon-size" onClick={this.props.logout}/>
+            <div className="flex between">
+              <Navbar goBack={this.props}/>
+              <img src="../images/logout.png" alt="logout icon" className="icon-size" onClick={this.props.logout}/>
             </div>
             <>
-                <h1>Profile page</h1>
-                <h2>Hello, {this.props.user.username}</h2>
-                <div className="flex around">
-                  <p> {this.props.user.email} </p>
-                  <Link to= '/profile/update'><img className="icon-size" src="../images/edituser.png" alt="edit user"/></Link>
-                </div>
-                <section className="flex column reset">
-                {talk.length > 0 ? talk.map((talk, index)=> {
-                  return (
-                    <article key={index}>
-                      <h3>{talk.title}</h3>
-                      <p>{talk.tags[0]}</p>
-                      <AudioElement key={talk._id} talk={talk}/>
-                      <div className="flex around">
+              <h1>Profile page</h1>
+              <h2>Hello, {this.props.user.username}</h2>
+              <div className="flex between">
+                <p> {this.props.user.email} </p>
+                <Link to= '/profile/update'><img className="icon-size" src="../images/edituser.png" alt="edit user"/></Link>
+              </div>
+              <section className="flex column reset">
+              {talk.length > 0 ? talk.map((talk, index)=> {
+                return (
+                  <article key={index} className="talk-cards">
+                    <h3>{talk.title}</h3>
+                    <p>{talk.tags[0]}</p>
+                    <div className="flex between">
                       <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
                       <Link to= {`/talk/update/${talk._id}`}><img className="icon-size" src="../images/edit-talk.png" alt="edit talk icon"/></Link>
-                      </div>
-                    </article>
+                    </div>
+                  </article>
                 )
                 }):null}
                 </section>

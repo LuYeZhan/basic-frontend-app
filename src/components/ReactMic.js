@@ -37,7 +37,6 @@ class Mic extends React.Component {
   }
 
   onData(recordedBlob) {
-    
   }
 
 onStop = (recordedBlob) => {
@@ -45,7 +44,6 @@ onStop = (recordedBlob) => {
   const randomNum = Math.floor(Math.random()*128394327832781/61283625);
     let audio = new File([recordedBlob.blob], `audio${moment(dateToday).format('LTS')}${randomNum}`, {type:"webm;codecs=opus"})
     storageRef.child(`audio${moment(dateToday).format('LTS')}${randomNum}`).put(audio).then( (snapshot) => {
-      console.log('Uploaded a blob or file!');
       firebase.storage().ref('audio').child(`audio${moment(dateToday).format('LTS')}${randomNum}`).getDownloadURL().then((url) => {
         this.setState({
           soundURL: url,
@@ -64,9 +62,11 @@ onStop = (recordedBlob) => {
           onStop={this.onStop}
           onData={this.onData}
           strokeColor="#000000"
-          backgroundColor="#FF8000" />
-        <button onClick={this.startRecording} type="button">Start</button>
-        <button onClick={this.stopRecording} type="button">Stop</button>
+          backgroundColor="#ffbc00"/>
+        <div className="flex around">
+          <button onClick={this.startRecording} type="button">Start</button>
+          <button onClick={this.stopRecording} type="button">Stop</button>
+        </div>
         {this.state.isSoundCreated ? 
         <FormTest soundURL={this.state.soundURL}/> : null}
       </div>

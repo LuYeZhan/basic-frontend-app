@@ -24,7 +24,7 @@ class AuthService {
     return this.auth.post('/logout')
       .then(response => response.data)
   };
-// si hay current user, devuelvemelo. Es decir para guardar el user, aunque hagamos refresh en la pagina
+
   me() {
     return this.auth.get('/me')
     .then(response => response.data)

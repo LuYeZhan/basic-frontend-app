@@ -33,7 +33,7 @@ export default withRouter(withFormik({
     },
     validationSchema: Yup.object().shape({
       title: Yup.string()
-        .required('explain what u said in 1 word'),
+        .required('explain what you said in one word'),
       tags: Yup.string()
         .required('#happiness')
     }),
@@ -42,8 +42,8 @@ export default withRouter(withFormik({
       const tags = values.tags;
       const soundURL = values.soundURL;
       talkService.create({ title, tags, soundURL})
-      .then(() =>{
-        bag.props.history.push('/profile')
-      })   
-    }
+        .then(() =>{
+          bag.props.history.push('/profile')
+        })   
+      }
   })(FormTest));

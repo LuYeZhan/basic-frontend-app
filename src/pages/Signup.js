@@ -26,11 +26,9 @@ class Signup extends Component {
           {this.props.errors.password && this.props.touched.password && <p>{this.props.errors.password}</p>}
           <button  type='submit' > Submit</button>
         </Form>
-
         <p>Already have account? 
           <Link to={'/login'}> Login</Link>
         </p>
-
       </>
     )
   }
@@ -39,10 +37,10 @@ class Signup extends Component {
 export default WithAuth(withFormik({
   mapPropsToValues({email, password, username}){
     return ({
-    email: email || '',
-    password: password || '',
-    username: username || '',
-    })
+      email: email || '',
+      password: password || '',
+      username: username || '',
+      })
   },
   validationSchema: Yup.object().shape({
     email: Yup.string()
@@ -50,7 +48,7 @@ export default WithAuth(withFormik({
       .required(),
     password: Yup.string()
       .required()
-      .min(2,'minimo 2 asshole!'),
+      .min(2,'at least 2 characters'),
     username: Yup.string()
       .required('username is required')
   }),
@@ -58,10 +56,6 @@ export default WithAuth(withFormik({
     const username = values.username;
     const password = values.password;
     const email = values.email;
-    
     props.signup({ username, password, email})
-    
   }
-
-
 })(Signup));

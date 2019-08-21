@@ -7,7 +7,6 @@ class UserService {
       withCredentials: true
     })
   };
-
   getUser() {
     return this.user.get('/profile')
       .then(({ data }) => data);
@@ -20,9 +19,6 @@ class UserService {
     return this.user.post('/profile')
       .then(({data}) => data);
   }
-  
-  }
-
+}
 const userService = new UserService();
-
 export default userService;

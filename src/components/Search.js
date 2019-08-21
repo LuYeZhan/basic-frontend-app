@@ -10,7 +10,7 @@ changeFatherState = (event) => {
     const value = event.target.value;
     const newTalks = this.state.talk
     const filteredTitles = newTalks.filter((talk) => {
-    return talk.title.includes(value) || talk.tags[0].includes(value)
+      return talk.title.includes(value) || talk.tags[0].includes(value)
     })
     this.props.changeTalk(filteredTitles)
 }
@@ -18,7 +18,7 @@ changeFatherState = (event) => {
 
     return (
       <>
-        <input type="text" name="txtBox" placeholder="Search" onChange={(event) => this.changeFatherState(event)}/>
+        <input className="search-width" type="text" name="txtBox" placeholder="Search" onChange={(event) => this.changeFatherState(event)}/>
       </>
     )
   }

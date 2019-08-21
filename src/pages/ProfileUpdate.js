@@ -39,11 +39,10 @@ const ProfileUpdateWithRouter = withRouter(ProfileUpdate)
 
 export default WithAuth(withFormik({
   mapPropsToValues({email, password, username}){
-    
     return ({
-    email: email || '',
-    password: password || '',
-    username: username || '',
+      email: email || '',
+      password: password || '',
+      username: username || '',
     })
   },
   validationSchema: Yup.object().shape({
@@ -52,7 +51,7 @@ export default WithAuth(withFormik({
       .required(),
     password: Yup.string()
       .required()
-      .min(2,'minimo 2 asshole!'),
+      .min(2,'at least 2 characters'),
     username: Yup.string()
       .required('username is required')
   }),
@@ -60,13 +59,11 @@ export default WithAuth(withFormik({
     const username = values.username;
     const password = values.password;
     const email = values.email;
-
     const id = props.user.id;
-    
     authService.update(id,{ username, password, email})
     .then(() =>{
-        props.history.push('/profile')
-        props.updateUserData();
+      props.history.push('/profile');
+      props.updateUserData();
     })
 
   }

@@ -6,8 +6,6 @@ const WithAuth = (Comp) => {
         render() {
             return (
                 <AuthContext.Consumer>
-                {/* esto es value desestructurizado, es decir en el Comp, deberia ser;
-                value.user, value.isLoggedIn, ... */}
                 {({user, isLoggedIn, login, signup, logout,update, updateUserData}) => (
                 <Comp 
                 user = {user} 

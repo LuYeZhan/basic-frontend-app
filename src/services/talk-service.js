@@ -15,15 +15,15 @@ class TalkService {
   };
   getTalk(id){
     return this.talk.get(`/${id}`)
-    .then(response=>response.data);
+      .then(response=>response.data);
   }
   update(id,talk) {
     return this.talk.put(`/update/${id}`, talk)
-    .then(response => response.data)
+      .then(response => response.data)
   };
   delete(id) {
     return this.talk.delete(`/delete/${id}`)
-    .then(response => response.data)
+      .then(response => response.data)
   };
 }
 

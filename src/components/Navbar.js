@@ -9,7 +9,7 @@ class Navbar extends Component {
       <>
         {this.props.isLoggedIn ? (
           <>
-            <img className ="icon-size" src='../images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
+            <img className ="icon-size" src='../../images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
           </>
         ) : (
         <>
