@@ -37,19 +37,22 @@ class Profile extends Component {
   render() {
       const {talk} = this.state
       return (
-          <>
+          <> 
+            <div className="flex around">
             <Navbar goBack={this.props}/>
-            <button onClick={this.props.logout}>Logout</button>
-            <div className="container">
+            <img src="../images/logout.png" alt="log out icon" className="logout" onClick={this.props.logout}/>
+            </div>
+            <div>
                 <h1>Profile page</h1>
+                <h2>Hello, {this.props.user.username}</h2>
+                <p> {this.props.user.email} </p>
                 <Link to= '/profile/update'> <button>Edit user</button> </Link>
-                <ul className="flex">
-                  <li><button>Add friend</button></li>
-                </ul>
                 <ul className="flex column">
                 {talk.length > 0 ? talk.map((talk, index)=> {
                   return (
                     <div key={index} >
+                      <h3>{talk.title}</h3>
+                      <p>{talk.tags[0]}</p>
                       <AudioElement key={talk._id} talk={talk}/>
                       <img src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
                       <Link to= {`/talk/update/${talk._id}`}> <button>Edit talk</button> </Link>

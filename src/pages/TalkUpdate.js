@@ -8,36 +8,30 @@ class UpdateTalk extends React.Component {
 
     state = {
         title: '',
-        tags: '',
-        currentTalk: '',
-    }
-
-    componentDidMount(){
-        const {id} = this.props.match.params;
+        tags: [],
+        talkId: this.props.match.params.id
         
     }
+componentDidMount() {
+  talkService.getTalk(this.state.talkId)
+  .then((response) => {
+    this.setState({
+      title: response.title,
+      tags: response.tags,
+    })
+      })   
+}
 
-    update = ( talk_id ) => {
-    talkService.update(talk_id)
-      .then((response) => {
-        const {talk} = this.state;
-        const newMyTalks = [...talk];
-        this.setState ({
-          talk: newMyTalks
-        })
-
-      })
-  }
         render() {
+         const {title, tags} = this.state
         return (
+          
             <Form>
-            {console.log(this)}
-                <Field  type='text' name='title' placeholder="title" value={this.props.title}/>
+                <Field  type='text' name='title' placeholder="title" />
                 {this.props.errors.title && this.props.touched.title && <p>{this.props.errors.title}</p>}
-                <Field  type='text' name='tags' placeholder="tags" value={this.props.tags} />
+                <Field  type='text' name='tags' placeholder="tags"  />
                 {this.props.errors.tags && this.props.touched.tags && <p>{this.props.errors.tags}</p>}
                 <button  type='submit'> Submit</button>
-                {/* <img src="./images/edit1.png" alt="update icon" onClick={() => this.update(talk._id) }/> */}
             </Form> 
         )
     }
@@ -56,16 +50,13 @@ export default withRouter(withFormik({
       tags: Yup.string()
         .required('#happiness')
     }),
-    handleSubmit(values, bag) {
+    handleSubmit(values, {props}) {
       const title = values.title;
       const tags = values.tags;
-      console.log(bag)
-      console.log(bag.user)
-      const id = bag.user.id
-
+      const id = props.match.params.id
       talkService.update(id,{ title, tags})
       .then(() =>{
-        bag.props.history.push('/profile')
+        props.history.push('/profile')
       })   
     }
   })(UpdateTalk));

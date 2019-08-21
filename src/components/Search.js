@@ -18,7 +18,7 @@ changeFatherState = (event) => {
 
     return (
       <>
-        <input type="text" name="txtBox" onChange={(event) => this.changeFatherState(event)}/>
+        <input type="text" name="txtBox" placeholder="Search" onChange={(event) => this.changeFatherState(event)}/>
       </>
     )
   }

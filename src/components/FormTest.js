@@ -25,7 +25,6 @@ class FormTest extends React.Component {
 
 export default withRouter(withFormik({
     mapPropsToValues({title, tags, soundURL}){
-        console.log(soundURL)
       return({
         title: title || '',
         tags: tags || '',
@@ -39,7 +38,6 @@ export default withRouter(withFormik({
         .required('#happiness')
     }),
     handleSubmit(values, bag) {
-      console.log(values)
       const title = values.title;
       const tags = values.tags;
       const soundURL = values.soundURL;

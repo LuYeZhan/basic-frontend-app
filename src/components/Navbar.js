@@ -7,11 +7,9 @@ class Navbar extends Component {
   render() { 
     return (
       <>
-        <h2>Navbar</h2>
         {this.props.isLoggedIn ? (
           <>
-            <p>username: {this.props.user.username}</p>
-            <img src='../images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
+            <img className ="navbar-back" src='../images/back.png' onClick={()=>{this.props.goBack.history.goBack()}} alt=''/>
           </>
         ) : (
         <>
