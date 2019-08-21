@@ -7,9 +7,9 @@ class Footer extends Component {
     render() {
         return (
             <div className="flex footer">
-                <Link to = '/' ><img src="../images/home.png" alt=""/></Link>
-                <Link to = '/create/talk' ><img src="../images/mic.png" alt="" /></Link>
-                <Link to = '/profile' ><img src="../images/profile.png" alt=""/></Link>
+                <Link to = '/' ><img className="icon-size" src="../images/home.png" alt=""/></Link>
+                <Link to = '/create/talk' ><img className="icon-size" src="../images/mic.png" alt="" /></Link>
+                <Link to = '/profile' ><img className="icon-size" src="../images/profile.png" alt=""/></Link>
             </div>
         )
     }

@@ -3,6 +3,7 @@ import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import talkService from '../services/talk-service'
 import { withRouter} from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 class UpdateTalk extends React.Component {
 
@@ -23,9 +24,10 @@ componentDidMount() {
 }
 
         render() {
-         const {title, tags} = this.state
+        
         return (
-          
+          <>
+            <Navbar goBack={this.props}/>
             <Form>
                 <Field  type='text' name='title' placeholder="title" />
                 {this.props.errors.title && this.props.touched.title && <p>{this.props.errors.title}</p>}
@@ -33,6 +35,7 @@ componentDidMount() {
                 {this.props.errors.tags && this.props.touched.tags && <p>{this.props.errors.tags}</p>}
                 <button  type='submit'> Submit</button>
             </Form> 
+          </>
         )
     }
 }

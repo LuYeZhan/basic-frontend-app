@@ -57,7 +57,7 @@ onStop = (recordedBlob) => {
   
   render() {
     return (
-      <div className="container">
+      <div>
         <ReactMic
           record={this.state.record}
           className="sound-wave width"

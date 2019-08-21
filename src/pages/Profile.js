@@ -40,28 +40,31 @@ class Profile extends Component {
           <> 
             <div className="flex around">
             <Navbar goBack={this.props}/>
-            <img src="../images/logout.png" alt="log out icon" className="logout" onClick={this.props.logout}/>
+            <img src="../images/logout.png" alt="logout icon" className="icon-size" onClick={this.props.logout}/>
             </div>
-            <div>
+            <>
                 <h1>Profile page</h1>
                 <h2>Hello, {this.props.user.username}</h2>
-                <p> {this.props.user.email} </p>
-                <Link to= '/profile/update'> <button>Edit user</button> </Link>
-                <ul className="flex column">
+                <div className="flex around">
+                  <p> {this.props.user.email} </p>
+                  <Link to= '/profile/update'><img className="icon-size" src="../images/edituser.png" alt="edit user"/></Link>
+                </div>
+                <section className="flex column reset">
                 {talk.length > 0 ? talk.map((talk, index)=> {
                   return (
-                    <div key={index} >
+                    <article key={index}>
                       <h3>{talk.title}</h3>
                       <p>{talk.tags[0]}</p>
                       <AudioElement key={talk._id} talk={talk}/>
-                      <img src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
-                      <Link to= {`/talk/update/${talk._id}`}> <button>Edit talk</button> </Link>
-                    </div>
+                      <div className="flex around">
+                      <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
+                      <Link to= {`/talk/update/${talk._id}`}><img className="icon-size" src="../images/edit-talk.png" alt="edit talk icon"/></Link>
+                      </div>
+                    </article>
                 )
                 }):null}
-                    <li><button>friends</button></li>
-                </ul>
-            </div>
+                </section>
+            </>
               <Footer/>
           </>
       )
