@@ -123,3 +123,11 @@ img {
   width: 75px ;
   height: 75px ;
 }
+
+.width {
+  width: 350px;
+  background-color: white;
+  color: black;
+}
+
+

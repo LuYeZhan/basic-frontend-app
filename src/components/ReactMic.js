@@ -8,9 +8,9 @@ moment.locale('es');
 require('typeface-roboto');
 
 const config = {
-  apiKey: "AIzaSyBuNW91oYKUj0x2V9FVbckJdU7EZrmAul8",
-  authDomain: "listenandtalk-a3074.firebaseapp.com",
-  storageBucket: "gs://listenandtalk-a3074.appspot.com"
+  apiKey: process.env.APIKEY,
+  authDomain: process.env.AUTHDOMAIN,
+  storageBucket: 'gs://listenandtalk-a3074.appspot.com'
 };
 
 firebase.initializeApp(config);
@@ -60,7 +60,7 @@ onStop = (recordedBlob) => {
       <div className="container">
         <ReactMic
           record={this.state.record}
-          className="sound-wave"
+          className="sound-wave width"
           onStop={this.onStop}
           onData={this.onData}
           strokeColor="#000000"

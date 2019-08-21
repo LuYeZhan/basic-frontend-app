@@ -33,17 +33,7 @@ class Profile extends Component {
   })
   })
   } 
-  update = ( talk_id ) => {
-    talkService.update(talk_id)
-      .then((response) => {
-        const {talk} = this.state;
-        const newMyTalks = [...talk];
-        this.setState ({
-          talk: newMyTalks
-        })
-
-      })
-  }
+  
   render() {
       const {talk} = this.state
       return (
@@ -62,7 +52,7 @@ class Profile extends Component {
                     <div key={index} >
                       <AudioElement key={talk._id} talk={talk}/>
                       <img src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
-                      {/* <img src="./images/edit1.png" alt="update icon" onClick={() => this.update(talk._id)}/> */}
+                      <Link to= {`/talk/update/${talk._id}`}> <button>Edit talk</button> </Link>
                     </div>
                 )
                 }):null}

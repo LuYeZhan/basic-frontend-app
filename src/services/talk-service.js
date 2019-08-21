@@ -13,7 +13,10 @@ class TalkService {
     return this.talk.post('/create', { title, tags, soundURL, creator  })
       .then(({ data }) => data);
   };
-
+  getTalk(id){
+    return this.talk.get(`/${id}`)
+    .then(response=>response.data);
+  }
   update(id,talk) {
     return this.talk.put(`/update/${id}`, talk)
     .then(response => response.data)

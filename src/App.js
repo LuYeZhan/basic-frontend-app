@@ -6,11 +6,12 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import CreateTalk from './pages/CreateTalk'
-import ProfileUpdate from './pages/ProfileUpdate'
+import CreateTalk from './pages/CreateTalk';
+import UpdateTalk from './pages/TalkUpdate';
+import ProfileUpdate from './pages/ProfileUpdate';
 import AuthProvider from './contexts/auth-context';
-import PrivateRoute from './components/PrivateRoute'
-import AnonRoute from './components/AnonRoute'
+import PrivateRoute from './components/PrivateRoute';
+import AnonRoute from './components/AnonRoute';
 
 
 import './App.css';
@@ -31,7 +32,8 @@ class App extends Component {
               <PrivateRoute path='/' exact component={Home} />
               <PrivateRoute path="/profile" exact component={Profile} />
               <PrivateRoute path= "/profile/update" component={ProfileUpdate}/>
-              <PrivateRoute path="/create-talk" component={CreateTalk} />
+              <PrivateRoute path="/create/talk" component={CreateTalk} />
+              <PrivateRoute path="/talk/update/:id" component={UpdateTalk} />
             </Switch>
           </div>
         </AuthProvider>
