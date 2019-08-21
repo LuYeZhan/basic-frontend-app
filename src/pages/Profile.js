@@ -45,7 +45,7 @@ class Profile extends Component {
               <h1>Profile page</h1>
               <h2>Hello, {this.props.user.username}</h2>
               <div className="flex between">
-                <p> {this.props.user.email} </p>
+                <p>{this.props.user.email}</p>
                 <Link to= '/profile/update'><img className="icon-size" src="../images/edituser.png" alt="edit user"/></Link>
               </div>
               <section className="flex column reset">

@@ -18,7 +18,7 @@ class Login extends Component {
         <Form>
           <Field type='text' name='username' placeholder="username"/>
           {this.props.errors.username && <p>{this.props.errors.username}</p>}
-          <Field  type='password' name='password' placeholder ="password" />
+          <Field className="input-margin" type='password' name='password' placeholder ="password" />
           {this.props.errors.password && <p>{this.props.errors.password}</p>}
           <button type='submit'> Submit </button>
         </Form>
