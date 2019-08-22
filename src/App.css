@@ -58,7 +58,7 @@ button{
   height: 60px;
 }
 button:hover{
-  background-color: #e6ecf0
+  background-color: #5bbecb
 }
 
 .margin-button {
@@ -152,5 +152,9 @@ input:hover{
 
 .loading{
   margin-left: 50%;
-  margin-top: 50%;
+  margin-top: 35%;
+}
+
+.margin-bottom{
+  margin-bottom: 25%;
 }

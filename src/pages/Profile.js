@@ -54,6 +54,11 @@ class Profile extends Component {
                   <article key={index} className="talk-cards">
                     <h3>{talk.title}</h3>
                     <p>{talk.tags[0]}</p>
+                    <audio
+                    controls
+                    src={talk.soundURL}>
+                    <code> audio </code> element.
+                  </audio>
                     <div className="flex between">
                       <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
                       <Link to= {`/talk/update/${talk._id}`}><img className="icon-size" src="../images/edit-talk.png" alt="edit talk icon"/></Link>
@@ -61,6 +66,8 @@ class Profile extends Component {
                   </article>
                 )
                 }):null}
+                <div className="margin-bottom">
+                </div>
                 </section>
             </>
               <Footer/>

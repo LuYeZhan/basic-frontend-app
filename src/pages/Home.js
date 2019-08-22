@@ -52,6 +52,8 @@ class Home extends Component {
               </div>
                   )
           }):null}
+          <div className="margin-bottom">
+          </div>
         </>
       <Footer/>
       </>
