@@ -67,7 +67,7 @@ class AuthProvider extends Component {
         const {user, isLoggedIn, isLoading} = this.state;
         return (
             <>
-                {isLoading ? <Spinner name="pacman" /> : (
+                {isLoading ? <Spinner className="loading" name="pacman" /> : (
 
                 <AuthContext.Provider value={ 
                     {
