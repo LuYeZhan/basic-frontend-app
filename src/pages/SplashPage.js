@@ -7,9 +7,9 @@ export default class SplashPage extends Component {
     render() {
         return (
             <div className="container text-center">
-                <h1>Listen and Talk</h1>
-                <Link to = '/signup'><button>Signup</button></Link>
-                <Link to = '/login'><button>Connect</button></Link>
+                <img className="logo" src="../images/logo.png" alt=" listen and talklogo"/>
+                <Link to = '/signup'><button className="margin-button">Signup</button></Link>
+                <Link to = '/login'><button className="margin-button">Connect</button></Link>
                 <p className="text-end">A social network, without image or videos</p>
                 <p className="text-end">So we can heard each other</p>
                 <p className="text-end">And really connect and engage</p>

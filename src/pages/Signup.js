@@ -17,6 +17,7 @@ class Signup extends Component {
     
     return (
       <>
+        <a href="/splash"><img className="icon-size margin-button" src="../images/back.png" alt="back icon"/></a>
         <Form>
           <Field type='text' name='username' placeholder="username"/>
           {this.props.errors.username && this.props.touched.username && <p>{this.props.errors.username}</p>}
