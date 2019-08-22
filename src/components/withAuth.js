@@ -7,7 +7,6 @@ const WithAuth = (Comp) => {
             return (
                 <AuthContext.Consumer>
                 {({user, isLoggedIn, login, signup, logout,update, updateUserData}) => (
-                    <>
                 <Comp 
                 user = {user} 
                 isLoggedIn = {isLoggedIn}
@@ -18,8 +17,6 @@ const WithAuth = (Comp) => {
                 updateUserData = {updateUserData}
                 {... this.props}
                 />
-                {console.log(user)}
-                </>
                 )}
                 </AuthContext.Consumer>
             )
