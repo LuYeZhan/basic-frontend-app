@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import authService from '../services/auth-service'
+import React, { Component } from 'react';
+import authService from '../services/auth-service';
+const Spinner = require('react-spinkit');
 
 export const AuthContext = React.createContext();
 
@@ -66,7 +67,7 @@ class AuthProvider extends Component {
         const {user, isLoggedIn, isLoading} = this.state;
         return (
             <>
-                {isLoading ? <p>Loading...</p> : (
+                {isLoading ? <Spinner name="pacman" /> : (
 
                 <AuthContext.Provider value={ 
                     {
