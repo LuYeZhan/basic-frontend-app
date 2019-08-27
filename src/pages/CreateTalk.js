@@ -12,7 +12,7 @@ class CreateTalk extends Component {
         return (
             <>
                 <Navbar goBack={this.props}/>
-                <div>
+                <div className= "create-talk-container" >
                     <h1> Create talk page</h1>
                     <Mic/>
                 </div>

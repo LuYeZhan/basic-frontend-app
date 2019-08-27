@@ -55,7 +55,7 @@ onStop = (recordedBlob) => {
   
   render() {
     return (
-      <div>
+      <div className="create-talk-container">
         <ReactMic
           record={this.state.record}
           className="sound-wave width"
@@ -63,7 +63,7 @@ onStop = (recordedBlob) => {
           onData={this.onData}
           strokeColor="#000000"
           backgroundColor="#ffbc00"/>
-        <div className="flex around">
+        <div className="button-margin">
           <button onClick={this.startRecording} type="button">Start</button>
           <button onClick={this.stopRecording} type="button">Stop</button>
         </div>
