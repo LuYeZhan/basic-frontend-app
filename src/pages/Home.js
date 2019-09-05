@@ -23,9 +23,9 @@ class Home extends Component {
       })
   }
 
-  talkShowingState = (talks) => {
+  talkShowingState = (newTalks) => {
     this.setState({
-      showingTalk: talks
+      showingTalk: newTalks,
     })
   }
 

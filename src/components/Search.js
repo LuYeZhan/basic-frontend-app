@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
 
  class Search extends Component {
-    state = {
-        talk: this.props.talk
-    }
+  state = {
+      talk: this.props.talk
+  }
 
-changeFatherState = (event) => {
+  changeFatherState = (event) => {
     event.preventDefault()
-    const value = event.target.value;
-    const newTalks = this.state.talk
-    const filteredTitles = newTalks.filter((talk) => {
-      return talk.title.includes(value) || talk.tags[0].includes(value)
+    const value = event.target.value.toLowerCase();
+    const newTalks = this.state.talk;
+    newTalks.map((talk)=>{
+      talk.newTitle = talk.title.toLowerCase();
+      talk.newTags = [talk.tags[0].toLowerCase()];
+      return talk;
     })
-    this.props.changeTalk(filteredTitles)
-}
+    const filteredTalks = newTalks.filter((talk) => {
+      return talk.newTitle.includes(value) || talk.newTags[0].includes(value)
+    })
+    this.props.changeTalk(filteredTalks);
+  }
+  
   render() {
 
     return (
