@@ -60,7 +60,9 @@ class Profile extends Component {
                     <code> audio </code> element.
                   </audio>
                     <div className="flex between">
-                      <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/>
+                      {/* code without the window.confirm message 
+                      <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={() => this.delete(index,talk._id)}/> */}
+                      <img className="icon-size" src="./images/delete.png" alt="delete icon" onClick={(e) => { if (window.confirm('Are you sure you want to delete this talk?')) (this.delete(index,talk._id)) } } />
                       <Link to= {`/talk/update/${talk._id}`}><img className="icon-size" src="../images/edit-talk.png" alt="edit talk icon"/></Link>
                     </div>
                   </article>
